@@ -26,12 +26,12 @@
 function isElementVisible(element) {
   const details = element.getBoundingClientRect();
   if (
-    details.bottom > 0 ||
-    details.top < (window.innerHeight || document.documentElement.clientHeight)
+    details.bottom < 0 ||
+    details.top > (window.innerHeight || document.documentElement.clientHeight)
   ) {
-    return true;
-  } else {
     return false;
+  } else {
+    return true;
   }
 }
 /**

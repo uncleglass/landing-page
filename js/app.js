@@ -23,7 +23,7 @@ let activeSection = document.querySelector(".your-active-class");
  * Start Helper Functions
  *
  */
-function isElementVisible(element) {
+const isElementVisible = (element) => {
   const details = element.getBoundingClientRect();
   if (
     details.bottom < 0 ||
@@ -33,9 +33,9 @@ function isElementVisible(element) {
   } else {
     return true;
   }
-}
+};
 
-function getVisibilityValue(element) {
+const getVisibilityValue = (element) => {
   const details = element.getBoundingClientRect();
   const height = Math.max(window.innerHeight || 0, document.documentElement.clientHeight || 0);
   if (details.top < 0) {
@@ -47,9 +47,9 @@ function getVisibilityValue(element) {
       return height - details.top;
     }
   }
-}
+};
 
-function findMostVisibleElement(elements) {
+const findMostVisibleElement = (elements) => {
   let mostVisible = elements[0];
   let visibilityValue = getVisibilityValue(mostVisible);
   for (let i = 0; i < elements.length; i++) {
@@ -61,7 +61,7 @@ function findMostVisibleElement(elements) {
     }
   }
   return mostVisible;
-}
+};
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -69,7 +69,7 @@ function findMostVisibleElement(elements) {
  */
 
 // build the nav
-function buildTheNav() {
+const buildTheNav = () => {
   const sections = document.querySelectorAll("section");
   const fragment = document.createDocumentFragment();
   for (const section of sections) {
@@ -83,10 +83,10 @@ function buildTheNav() {
   }
   const navbarList = document.querySelector("#navbar__list");
   navbarList.appendChild(fragment);
-}
+};
 
 // Add class 'active' to section when near top of viewport
-function active() {
+const active = () => {
   window.addEventListener("scroll", () => {
     const sections = document.querySelectorAll("section");
     const visibles = [];
@@ -104,16 +104,16 @@ function active() {
       }
     }
   });
-}
+};
 // Scroll to anchor ID using scrollTO event
-function scroll() {
+const scroll = () => {
   document.getElementById("navbar__list").addEventListener("click", (evt) => {
     evt.preventDefault();
     const txt = evt.target.textContent;
     const section = document.querySelector(`[data-nav='${txt}']`);
     section.scrollIntoView({ behavior: "smooth" });
   });
-}
+};
 /**
  * End Main Functions
  * Begin Events

@@ -106,7 +106,14 @@ function active() {
   });
 }
 // Scroll to anchor ID using scrollTO event
-
+function scroll() {
+  document.getElementById("navbar__list").addEventListener("click", (evt) => {
+    evt.preventDefault();
+    const txt = evt.target.textContent;
+    const section = document.querySelector(`[data-nav='${txt}']`);
+    section.scrollIntoView({ behavior: "smooth" });
+  });
+}
 /**
  * End Main Functions
  * Begin Events
@@ -116,6 +123,6 @@ function active() {
 // Build menu
 buildTheNav();
 // Scroll to section on link click
-
+scroll();
 // Set sections as active
 active();
